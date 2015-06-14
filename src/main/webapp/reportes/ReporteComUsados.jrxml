@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="832399a2-5b26-4f84-b6d8-df096b907d42">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaIni" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from seg_usuario]]>
+	</queryString>
+	<field name="USUARIO" class="java.lang.String">
+		<fieldDescription><![CDATA[Identificador único del usuario del sistema]]></fieldDescription>
+	</field>
+	<field name="PERSONA" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Identificador único de la Persona]]></fieldDescription>
+	</field>
+	<field name="CLAVE" class="java.lang.String">
+		<fieldDescription><![CDATA[Password o contraseña de acceso al sistema]]></fieldDescription>
+	</field>
+	<field name="ACTIVO" class="java.lang.String">
+		<fieldDescription><![CDATA[Define si el registro esta activo o no]]></fieldDescription>
+	</field>
+	<field name="DETALLE" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Bandera de ultimo bivel]]></fieldDescription>
+	</field>
+	<field name="CAMB_CLAVE" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Bandera que identifica si el usuario cambiará la clave de acceso al sistema]]></fieldDescription>
+	</field>
+	<field name="USUARIOCREA" class="java.lang.String">
+		<fieldDescription><![CDATA[Identificador del usuario que crea el registro]]></fieldDescription>
+	</field>
+	<field name="FECHACREA" class="java.sql.Date">
+		<fieldDescription><![CDATA[Fecha-hora de creación del registro]]></fieldDescription>
+	</field>
+	<field name="USUARIOMODIF" class="java.lang.String">
+		<fieldDescription><![CDATA[Identificador del usuario que modifica el registro]]></fieldDescription>
+	</field>
+	<field name="FECHAMODIF" class="java.sql.Date">
+		<fieldDescription><![CDATA[Fecha-hora de modificación del registro]]></fieldDescription>
+	</field>
+	<field name="CANTMODIF" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<textField>
+				<reportElement x="423" y="4" width="77" height="20" uuid="78b639cd-91a6-4616-899a-727579ff78e0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="500" y="4" width="55" height="20" uuid="7788f6e8-51dc-4bde-900f-fba22823fa7b"/>
+				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="37" width="295" height="47" uuid="50b30535-1265-4546-895e-c8b5ba6d6eef"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de Medicos de comunicacion mas usados]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="15" width="100" height="20" uuid="53df6809-0892-4bcb-a37a-02a697ee315b"/>
+				<textFieldExpression><![CDATA[$P{fechaIni}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="134" y="38" width="100" height="20" uuid="852c6e3e-f121-4d56-a74c-1c9af75f4a21"/>
+				<textFieldExpression><![CDATA[$F{USUARIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="41" width="100" height="20" uuid="b0975384-e381-4d41-bc3e-2dd1a05ed2ab"/>
+				<textFieldExpression><![CDATA[$F{CLAVE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
