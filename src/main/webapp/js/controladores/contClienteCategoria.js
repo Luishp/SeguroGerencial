@@ -3,7 +3,7 @@ var urlg = "../scparametros/clienteCategoria.jsp";
 
 function traerCategoria() {
     var idTipoSeguro = $("#TIPO_SEGURO option:selected").attr("value");
-    var seguro = new Array();
+    var vista = new Array();
     console.log("Valor de las variables");
     console.log(idTipoSeguro);
     

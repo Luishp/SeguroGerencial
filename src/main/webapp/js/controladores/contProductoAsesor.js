@@ -5,7 +5,7 @@ var urlg = "../scparametros/productoAsesor.jsp";
 function traerProducto() {
     var idAsesor = $("#NOM_ASE option:selected").attr("value");
     var tiposeguro = $("#TIPO_SEGURO").val();
-    var asesor = new Array();
+    var vista = new Array();
     console.log("Valor de las variables");
     console.log(idAsesor);
     console.log(tiposeguro);

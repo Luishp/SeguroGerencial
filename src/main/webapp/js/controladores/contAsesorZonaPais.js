@@ -5,7 +5,7 @@ function traerAsezonaPais() {
     var idDisponibilidad = $("#DISPONIBILIDAD option:selected").attr("value");
     var municipio = $("#MUNI_ASE").val();
     var departamento = $("#DEPT_ASE").val();
-    var vistas = new Array();
+    var vista = new Array();
     console.log("Valor de las variables");
     console.log(idDisponibilidad);
     console.log(municipio);

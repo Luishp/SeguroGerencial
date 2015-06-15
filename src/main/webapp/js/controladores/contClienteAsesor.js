@@ -4,7 +4,7 @@ var urlg = "../scparametros/clienteAsesor.jsp";
 function traerAsesor() {
     var idAsesor = $("#NOM_ASE option:selected").attr("value");
     var dniAsesor = $("#DNI_ASE").val();
-    var asesor = new Array();
+    var vista = new Array();
     console.log("Valor de las variables");
     console.log(idAsesor);
     console.log(dniAsesor);
