@@ -13,6 +13,6 @@ function traerAsezonaPais() {
     if (municipio === null && departamento===null) {
         alert("Se necesita tener seleccionado los campos");
     } else {
-        window.location.href = urlg + "?fechaIni=" + fechaIni + "&fechaFin=" + fechaFin;
+        window.location.href = urlg + "?municipio=" + municipio + "&departamento=" + departamento;
     }
 }

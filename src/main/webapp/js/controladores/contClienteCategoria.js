@@ -10,6 +10,6 @@ function traerCategoria() {
     if (idTipoSeguro === null ) {
         alert("Se necesita tener seleccionado  Tipo de seguro");
     } else {
-        window.location.href = urlg + "?fechaIni=" + fechaIni + "&fechaFin=" + fechaFin;
+        window.location.href = urlg + "?idTipoSeguro" + idTipoSeguro;
     }
 }

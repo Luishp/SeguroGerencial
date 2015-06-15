@@ -12,7 +12,7 @@ function traerProducto() {
      if (idAsesor === null && dniAsesor===null) {
         alert("Se necesita tener seleccionado nombre y dni del asesor");
     } else {
-        window.location.href = urlg + "?idechaIni=" + fechaIni + "&fechaFin=" + fechaFin; //no entiendo esta linea
+        window.location.href = urlg + "?idAsesor=" + idAsesor + "&tiposeguro=" + tiposeguro; 
     }
 }
 
