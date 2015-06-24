@@ -10,6 +10,7 @@
         <script src="libs/jquery-1.9.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="libs/jquery.validate.min.js"></script>
+        <script src="js/controladores/validarhome.js"></script><!--Agregar esta linea -->
         <link rel="stylesheet" href="css/template.css">
     </head>
     <body>
@@ -32,7 +33,7 @@
                         <li><a href="#">INICIO</a></li>
                         <li><a href="#">ACERCA DE</a></li>
                         <li><a href="#">PERFIL DE EMPRESA</a></li>
-                        <li><a href="#">AYUDA</a></li>
+                        <li><a href="#" onclick="salir()">SALIR</a></li>
                     </ul>
                     <form class="navbar-form navbar-right">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -65,8 +66,40 @@
                     <div class="thumbnail">
                         <img src="css/images/Logo1.png" alt="Reporte">
                         <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
+                            <h3>Reporte de asesores con horario disponible</h3>
+                            <p>En este reporte se visualizan los asesores disponibles por zona de pais</p>
+                            <p><a href="Vistas/asesorZonaPais.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="css/images/Logo1.png" alt="Reporte">
+                        <div class="caption">
+                            <h3>Reporte de asignaciones de Polizas de seguros</h3>
+                            <p>En este reporte se visualizan las polizas de seguro asignadas por asesor</p>
+                            <p><a href="Vistas/productoAsesor.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="css/images/Logo1.png" alt="Reporte">
+                        <div class="caption">
+                            <h3>Reporte de asignaciones de Clientes</h3>
+                            <p>En este reporte se visualizan los clientes asignados por asesor</p>
+                            <p><a href="Vistas/clientesAsesor.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="css/images/Logo1.png" alt="Reporte">
+                        <div class="caption">
+                            <h3>Reporte de Clientes por categoria</h3>
+                            <p>En este reporte se visualizan los clientes de una categoria seleccionada</p>
                             <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
                         </div>
                     </div>
@@ -146,51 +179,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <jsp:useBean id="javaBeans" class="javaBeans.Usuarios" scope="session"/>
-
-            <%
-                String usuario = (String) session.getAttribute("nombre");
-                String otro = javaBeans.getNombre();
-                String rol = "luis";
-                if (true) {
-                    out.println("<br>Bienvenido usuario " + usuario + " tu rol es " + rol);
-                } else {
-                    response.sendRedirect("error.jsp");
-                }
-            %>
 
         </div> <!-- /container -->
         <hr>

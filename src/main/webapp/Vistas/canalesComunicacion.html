@@ -8,6 +8,7 @@
         <script src="../libs/jquery-1.9.1.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../libs/jquery.validate.min.js"></script>
+        <script src="../js/controladores/validarvistas.js"></script><!--Agregar esta linea -->
         <link rel="stylesheet" href="../css/template.css">
     </head>
     <body>
@@ -30,7 +31,7 @@
                         <li><a href="#">INICIO</a></li>
                         <li><a href="#">ACERCA DE</a></li>
                         <li><a href="#">PERFIL DE EMPRESA</a></li>
-                        <li><a href="#">AYUDA</a></li>
+                        <li><a href="#" onclick="salir()">SALIR</a></li><!--Modificar esta linea -->
                     </ul>
                     <form class="navbar-form navbar-right">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -74,7 +75,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="traerVisitas()">Generar nuevo Reporte</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="traerCanales()">Generar nuevo Reporte</button>
                 </div>
             </form>
         </div> <!-- /container -->

@@ -1,8 +1,8 @@
 
 var urlg = "../scparametros/canalesComunicacion.jsp";
 
-function traerVisitas() {
-    var canal= $("#CANAL option:selected").attr("value");
+function traerCanales() {
+    var canal = $("#CANAL option:selected").attr("value");
     var fechaIni = $("#FECHA_INI").val();
     var fechaFin = $("#FECHA_FIN").val();
     var vistas = new Array();
@@ -10,9 +10,23 @@ function traerVisitas() {
     console.log(canal);
     console.log(fechaIni);
     console.log(fechaFin);
-    if (fechaIni === null && fechaFin===null) {
+    if (fechaIni === null && fechaFin === null) {
         alert("Se necesita tener seleccionado fecha inicial y final");
     } else {
         window.location.href = urlg + "?fechaIni=" + fechaIni + "&fechaFin=" + fechaFin;
+    }
+}
+
+$(document).ready(function () {
+    console.log("ready!");
+    validarRol();
+});
+
+function validarRol() {
+    var mirol = localStorage.getItem("Rol");
+    if (mirol === "gerente") {
+        console.log("Correcta sesion iniciada");
+    } else {
+        window.location.href = "../error.jsp";
     }
 }
