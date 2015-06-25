@@ -4,83 +4,138 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="fechaIni" class="java.lang.String"/>
+	<parameter name="fechaFin" class="java.lang.String"/>
+	<parameter name="horaRep" class="java.lang.String"/>
+	<parameter name="fechaRep" class="java.lang.String">
+		<defaultValueExpression><![CDATA["dd/mm/aaaa"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select * from seg_usuario]]>
+		<![CDATA[select * from municipio]]>
 	</queryString>
-	<field name="USUARIO" class="java.lang.String">
-		<fieldDescription><![CDATA[Identificador único del usuario del sistema]]></fieldDescription>
+	<field name="ID_MUNICIPIO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Identificador único o llave primaria de la división del país]]></fieldDescription>
 	</field>
-	<field name="PERSONA" class="java.lang.Integer">
-		<fieldDescription><![CDATA[Identificador único de la Persona]]></fieldDescription>
+	<field name="ID_ZONA" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Identificador único o llave primaria del pais]]></fieldDescription>
 	</field>
-	<field name="CLAVE" class="java.lang.String">
-		<fieldDescription><![CDATA[Password o contraseña de acceso al sistema]]></fieldDescription>
+	<field name="ID_DEPARTAMENTO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Identificador único o llave primaria de la zona]]></fieldDescription>
 	</field>
-	<field name="ACTIVO" class="java.lang.String">
-		<fieldDescription><![CDATA[Define si el registro esta activo o no]]></fieldDescription>
-	</field>
-	<field name="DETALLE" class="java.lang.Integer">
-		<fieldDescription><![CDATA[Bandera de ultimo bivel]]></fieldDescription>
-	</field>
-	<field name="CAMB_CLAVE" class="java.lang.Integer">
-		<fieldDescription><![CDATA[Bandera que identifica si el usuario cambiará la clave de acceso al sistema]]></fieldDescription>
-	</field>
-	<field name="USUARIOCREA" class="java.lang.String">
-		<fieldDescription><![CDATA[Identificador del usuario que crea el registro]]></fieldDescription>
-	</field>
-	<field name="FECHACREA" class="java.sql.Date">
-		<fieldDescription><![CDATA[Fecha-hora de creación del registro]]></fieldDescription>
-	</field>
-	<field name="USUARIOMODIF" class="java.lang.String">
-		<fieldDescription><![CDATA[Identificador del usuario que modifica el registro]]></fieldDescription>
-	</field>
-	<field name="FECHAMODIF" class="java.sql.Date">
-		<fieldDescription><![CDATA[Fecha-hora de modificación del registro]]></fieldDescription>
-	</field>
-	<field name="CANTMODIF" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
+	<field name="MUNICIPIO" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre del departamento o provincia]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="122" splitType="Stretch">
+		<band height="154" splitType="Stretch">
 			<textField>
-				<reportElement x="423" y="4" width="77" height="20" uuid="78b639cd-91a6-4616-899a-727579ff78e0"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="423" y="0" width="77" height="20" uuid="78b639cd-91a6-4616-899a-727579ff78e0"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="500" y="4" width="55" height="20" uuid="7788f6e8-51dc-4bde-900f-fba22823fa7b"/>
+				<reportElement x="500" y="0" width="55" height="20" uuid="7788f6e8-51dc-4bde-900f-fba22823fa7b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="142" y="37" width="295" height="47" uuid="50b30535-1265-4546-895e-c8b5ba6d6eef"/>
+				<reportElement x="147" y="55" width="295" height="47" uuid="50b30535-1265-4546-895e-c8b5ba6d6eef"/>
 				<textElement textAlignment="Center">
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Reporte de Medicos de comunicacion mas usados]]></text>
+				<text><![CDATA[Reporte de Medios de comunicacion mas usados]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="30" y="15" width="100" height="20" uuid="53df6809-0892-4bcb-a37a-02a697ee315b"/>
+				<reportElement x="105" y="112" width="100" height="20" uuid="53df6809-0892-4bcb-a37a-02a697ee315b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{fechaIni}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="112" width="105" height="20" uuid="c5602a44-e064-4248-b8dd-f0978897ddd4"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Utilizados desde:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="112" width="44" height="20" uuid="f0eaba98-9efb-49dc-856d-a454a597993d"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[hasta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="249" y="112" width="100" height="20" uuid="fbfcfb82-c1c3-4bca-8e13-965ec20c4157"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaFin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="105" height="20" uuid="9b80bb8b-5667-4266-869b-431042c30c8d"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Emision:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="0" width="100" height="20" uuid="492b0bae-c91f-4c57-ba7b-0471515279fd"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaRep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="65" y="20" width="40" height="20" uuid="b3ef2b90-ecab-4ff9-900d-97adec818948"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="20" width="100" height="20" uuid="7f891a23-e333-4a79-b81d-476ae16be739"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{horaRep}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="134" y="38" width="100" height="20" uuid="852c6e3e-f121-4d56-a74c-1c9af75f4a21"/>
-				<textFieldExpression><![CDATA[$F{USUARIO}]]></textFieldExpression>
+				<reportElement x="186" y="15" width="100" height="20" uuid="33de6520-c73c-4b64-97a5-36895c238881"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{ID_MUNICIPIO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="396" y="41" width="100" height="20" uuid="b0975384-e381-4d41-bc3e-2dd1a05ed2ab"/>
-				<textFieldExpression><![CDATA[$F{CLAVE}]]></textFieldExpression>
+				<reportElement x="286" y="15" width="100" height="20" uuid="b19fc573-faa9-4d03-940e-afd2626656ae"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
 			</textField>
 		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch"/>
