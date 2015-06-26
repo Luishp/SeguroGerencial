@@ -58,8 +58,8 @@
         Connection conexion;
         Class.forName(driver);
         conexion = DriverManager.getConnection(connectString, user, password);
-        System.out.println(application.getRealPath("/reportes/ReporteComUsados.jasper"));
-        File file=new File(application.getRealPath("/reportes/ReporteComUsados.jasper"));
+        System.out.println(application.getRealPath("/reportes/ReporteproductoAsesor.jasper"));
+        File file=new File(application.getRealPath("/reportes/ReporteproductoAsesor.jasper"));
         JasperReport reporte = (JasperReport) JRLoader.loadObject(file);
         byte[] bytes = JasperRunManager.runReportToPdf(reporte, parametros, conexion);
         response.setContentType("application/pdf");

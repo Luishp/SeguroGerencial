@@ -1,29 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec2968fd-25af-469c-95a0-3794f8d012ad">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaRep" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="horaRep" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tiposeguro" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from reponueve where tiposeguro=$P{tiposeguro}]]>
+	</queryString>
+	<field name="ID_ASESR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ASESR_NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ASESR_APELLIDO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CLIENTEE_NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CLIENTEE_APELLIDO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tiposeguro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="10" width="100" height="20" uuid="2fe9a55c-e9dc-4c5e-9d88-af4738c1d95b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaRep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="105" height="20" uuid="d17c8363-777b-45e0-b3af-317091ad626a"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Emision:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="30" width="100" height="20" uuid="a92bec49-ee42-4d56-80f3-b7c1c3ea9871"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{horaRep}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="500" y="10" width="55" height="20" uuid="51a8a9e4-13a7-4dcd-972e-91842b53ac3c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="138" y="63" width="295" height="47" uuid="2b46e9b3-9537-4ccf-96fb-7302c6d66269"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de Producto por asesor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="423" y="10" width="77" height="20" uuid="e9f92633-c08e-48d2-9c14-b53bbf014bce"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="2" width="100" height="20" uuid="0fc32e38-9bcb-4610-a584-948c1f844832"/>
+				<text><![CDATA[ID_ASESR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="2" width="100" height="20" uuid="15661e94-63b9-4394-9d2d-957044e6e5b8"/>
+				<text><![CDATA[ASESR_NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="2" width="100" height="20" uuid="0b0f0e19-b274-40fb-9dc2-bd9424f96978"/>
+				<text><![CDATA[CLIENTEE_NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="2" width="100" height="20" uuid="5fb041c5-18df-4203-ac48-72ccef9e6435"/>
+				<text><![CDATA[CLIENTEE_APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="2" width="75" height="20" uuid="0deb94dd-acff-4e8b-b4b3-fc9b375185a8"/>
+				<text><![CDATA[tiposeguro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="9" y="22" width="100" height="20" uuid="002eab77-e8f4-48d8-83ac-be2afe80af5f"/>
+				<textFieldExpression><![CDATA[$F{ID_ASESR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="22" width="100" height="20" uuid="62d47fd2-2b36-4cf7-b947-10fb809cdec3"/>
+				<textFieldExpression><![CDATA[$F{ASESR_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="22" width="100" height="20" uuid="f63b8cd8-d288-4e60-959d-96955f52f27b"/>
+				<textFieldExpression><![CDATA[$F{CLIENTEE_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="22" width="100" height="20" uuid="ee1f0b8e-cb2a-4b2e-931d-d8bb1e8ccbc9"/>
+				<textFieldExpression><![CDATA[$F{CLIENTEE_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="22" width="70" height="20" uuid="3067fd17-5b0a-4527-bf0c-8343ec6a654b"/>
+				<textFieldExpression><![CDATA[$F{tiposeguro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>

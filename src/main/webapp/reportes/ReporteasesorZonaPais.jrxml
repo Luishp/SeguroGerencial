@@ -8,15 +8,21 @@
 	<parameter name="fechaRep" class="java.lang.String"/>
 	<parameter name="horaRep" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select * from zona where municipio =$P{municipio}]]>
+		<![CDATA[select * from repoocho where municipio=$P{municipio}]]>
 	</queryString>
-	<field name="municipio" class="java.lang.String">
+	<field name="ID_ASESORR" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="departamento" class="java.lang.String">
+	<field name="NOMBRES_ASESORR" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="asesor" class="java.lang.String">
+	<field name="APELLIDOS_ASESORR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="POLIZA_SEGURO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MUNICIPIO" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -25,42 +31,42 @@
 	<title>
 		<band height="112" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="10" width="105" height="20" uuid="9db62b18-0081-444d-9449-36681b8ee575"/>
+				<reportElement x="31" y="10" width="105" height="20" uuid="9db62b18-0081-444d-9449-36681b8ee575"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Fecha Emision:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="75" y="30" width="40" height="20" uuid="00020ff8-ec3f-4846-a743-b7fb4b0863a6"/>
+				<reportElement x="96" y="30" width="40" height="20" uuid="00020ff8-ec3f-4846-a743-b7fb4b0863a6"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Hora:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="115" y="10" width="100" height="20" uuid="d419b821-6884-49ff-a3b9-b689d2f991e8"/>
+				<reportElement x="134" y="10" width="100" height="20" uuid="d419b821-6884-49ff-a3b9-b689d2f991e8"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fechaRep}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="510" y="10" width="55" height="20" uuid="8f168499-991e-4f08-bc71-a029795ebb55"/>
+				<reportElement x="487" y="10" width="55" height="20" uuid="8f168499-991e-4f08-bc71-a029795ebb55"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="115" y="30" width="100" height="20" uuid="d269ea11-1901-4528-aca0-64d0797b7926"/>
+				<reportElement x="134" y="30" width="100" height="20" uuid="d269ea11-1901-4528-aca0-64d0797b7926"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{horaRep}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="433" y="10" width="77" height="20" uuid="8643abaa-444b-45ee-9f98-196b4a301292"/>
+				<reportElement x="410" y="10" width="77" height="20" uuid="8643abaa-444b-45ee-9f98-196b4a301292"/>
 				<textElement textAlignment="Right">
 					<font size="12"/>
 				</textElement>
@@ -81,32 +87,40 @@
 	<columnHeader>
 		<band height="31" splitType="Stretch">
 			<staticText>
-				<reportElement x="160" y="2" width="100" height="20" uuid="f6b616ed-6730-4a08-85b2-d7c1e5610414"/>
-				<text><![CDATA[municipio]]></text>
+				<reportElement x="11" y="2" width="100" height="20" uuid="cfdcc37d-3ad6-41ac-9ca4-1a6f4dfa0d02"/>
+				<text><![CDATA[ID_ASESORR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="338" y="2" width="100" height="20" uuid="0104ecbc-e5aa-4733-8691-9076b4f36012"/>
-				<text><![CDATA[departamento]]></text>
+				<reportElement x="157" y="2" width="100" height="20" uuid="e3b1917f-44d0-40e6-821e-e9118d2c10a1"/>
+				<text><![CDATA[NOMBRES_ASESORR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="2" width="100" height="20" uuid="66dabe14-7d31-4732-b79f-3b736a6acc31"/>
-				<text><![CDATA[asesor]]></text>
+				<reportElement x="299" y="2" width="100" height="20" uuid="b07f1809-a298-4142-82f2-a9e372383444"/>
+				<text><![CDATA[POLIZA_SEGURO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="2" width="100" height="20" uuid="467ba8da-5308-4540-9c8d-fcb89edd03d3"/>
+				<text><![CDATA[MUNICIPIO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="67" splitType="Stretch">
 			<textField>
-				<reportElement x="157" y="25" width="100" height="20" uuid="aa5ed293-b784-42a9-b254-75a396d8cb33"/>
-				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
+				<reportElement x="11" y="28" width="100" height="20" uuid="40d81b14-691d-4522-b5f0-c138b399f5c5"/>
+				<textFieldExpression><![CDATA[$F{ID_ASESORR}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="338" y="25" width="100" height="20" uuid="e99aeb81-bbc5-4c5b-b645-a9c8eeda0810"/>
-				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
+				<reportElement x="157" y="28" width="100" height="20" uuid="1965bd32-6268-4524-90f9-518a2b40c6ca"/>
+				<textFieldExpression><![CDATA[$F{NOMBRES_ASESORR}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="10" y="25" width="100" height="20" uuid="3367251c-f891-4dc1-b8de-30ae8d83f6e1"/>
-				<textFieldExpression><![CDATA[$F{asesor}]]></textFieldExpression>
+				<reportElement x="299" y="28" width="100" height="20" uuid="2617f5e3-e15f-4ea8-b62b-0e9d4d01d4b8"/>
+				<textFieldExpression><![CDATA[$F{POLIZA_SEGURO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="28" width="100" height="20" uuid="9e94ec8d-6ea4-4cf3-ba89-0e46485260bd"/>
+				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
