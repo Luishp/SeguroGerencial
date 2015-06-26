@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="832399a2-5b26-4f84-b6d8-df096b907d42">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="82"/>
 	<parameter name="fechaIni" class="java.lang.String"/>
 	<parameter name="fechaFin" class="java.lang.String"/>
 	<parameter name="horaRep" class="java.lang.String"/>
@@ -10,19 +10,14 @@
 		<defaultValueExpression><![CDATA["dd/mm/aaaa"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from municipio]]>
+		<![CDATA[select count(persona),canal,persona from(select * from canalutil where fecha<=$P{fechaFin} and fecha>=$P{fechaIni}) as can]]>
 	</queryString>
-	<field name="ID_MUNICIPIO" class="java.lang.Integer">
-		<fieldDescription><![CDATA[Identificador único o llave primaria de la división del país]]></fieldDescription>
+	<field name="count(persona)" class="java.lang.Long"/>
+	<field name="canal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="ID_ZONA" class="java.lang.Integer">
-		<fieldDescription><![CDATA[Identificador único o llave primaria del pais]]></fieldDescription>
-	</field>
-	<field name="ID_DEPARTAMENTO" class="java.lang.Integer">
-		<fieldDescription><![CDATA[Identificador único o llave primaria de la zona]]></fieldDescription>
-	</field>
-	<field name="MUNICIPIO" class="java.lang.String">
-		<fieldDescription><![CDATA[Nombre del departamento o provincia]]></fieldDescription>
+	<field name="persona" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -109,36 +104,39 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement x="186" y="15" width="100" height="20" uuid="33de6520-c73c-4b64-97a5-36895c238881"/>
-				<box leftPadding="0">
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{ID_MUNICIPIO}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="286" y="15" width="100" height="20" uuid="b19fc573-faa9-4d03-940e-afd2626656ae"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="264" y="2" width="127" height="20" uuid="f389404b-95b3-4d20-8cf3-4fbdd38065c8"/>
+				<text><![CDATA[canal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="2" width="123" height="20" uuid="1bb357bc-cc0f-4dde-93f7-6892a33c7d84"/>
+				<text><![CDATA[Veces usadas por periodo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="2" width="117" height="20" uuid="4ab52a6f-d53a-4651-8e67-689780f5e279"/>
+				<text><![CDATA[persona]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="264" y="3" width="127" height="20" uuid="a919e4f1-5ef5-47b7-91de-fdcc9a6f9662"/>
+				<textFieldExpression><![CDATA[$F{canal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="3" width="123" height="20" uuid="9f7c9ce5-4a11-460d-8bc1-c13d7e8d03e8"/>
+				<textFieldExpression><![CDATA[$F{count(persona)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="5" width="115" height="20" uuid="433f2816-e579-49e8-89d2-218a22427299"/>
+				<textFieldExpression><![CDATA[$F{persona}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

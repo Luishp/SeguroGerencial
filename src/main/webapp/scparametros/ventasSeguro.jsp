@@ -23,14 +23,16 @@
 <html>
     <%
         /*Parametros para realizar la conexión*/
-        String inicial=request.getParameter("municipio");
-        String fin=request.getParameter("departamento");
+        String inicial = request.getParameter("fechaIni");
+        String fin = request.getParameter("fechaFin");
         String driver = "com.mysql.jdbc.Driver";
         String connectString = "jdbc:mysql://localhost:3306/aseguradora";
         String user = "admin";
         String password = "master";
         Map parametros = new HashMap();
-         Calendar fecha = new GregorianCalendar();
+        //Instanciamos el objeto Calendar
+        //en fecha obtenemos la fecha y hora del sistema
+        Calendar fecha = new GregorianCalendar();
         //Obtenemos el valor del año, mes, día,
         //hora, minuto y segundo del sistema
         //usando el método get y el parámetro correspondiente
@@ -47,18 +49,15 @@
         System.out.printf("Hora Actual: %02d:%02d:%02d %n",
                 hora, minuto, segundo);
 
-        //Integer id2=Integer.parseInt(id);
-        parametros.put("municipio", inicial);
-        parametros.put("departamento",fin);
+        parametros.put("fechaIni", inicial);
+        parametros.put("fechaFin", fin);
         parametros.put("fechaRep", fechaReporte);
         parametros.put("horaRep", horaReporte);
-        
-        //System.out.println(id);
         Connection conexion;
         Class.forName(driver);
         conexion = DriverManager.getConnection(connectString, user, password);
-        System.out.println(application.getRealPath("/reportes/ReporteasesorZonaPais.jasper"));
-        File file=new File(application.getRealPath("/reportes/ReporteasesorZonaPais.jasper"));
+        System.out.println(application.getRealPath("/reportes/ReporteVentasSeguro.jasper"));
+        File file = new File(application.getRealPath("/reportes/ReporteVentasSeguro.jasper"));
         JasperReport reporte = (JasperReport) JRLoader.loadObject(file);
         byte[] bytes = JasperRunManager.runReportToPdf(reporte, parametros, conexion);
         response.setContentType("application/pdf");
@@ -68,4 +67,28 @@
         ouputStream.flush();
         ouputStream.close();
     %>
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            validarlogueo();
+            validarRol();
+        });
+
+        function validarlogueo() {
+            if (localStorage.getItem("Usuario") !== null) {
+                console.log("Correcta sesion iniciada");
+            }
+            else {
+                window.location.href = "../error.jsp";
+            }
+        }
+        function validarRol() {
+            var mirol = localStorage.getItem("Rol");
+            if (mirol === "gerente") {
+                console.log("Correcta sesion iniciada");
+            } else {
+                window.location.href = "../error.jsp";
+            }
+        }
+    </script>
 </html>

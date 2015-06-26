@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4491ec5-1cc7-4c55-9bab-fd400bc65fd8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idAsesor" class="java.lang.String"/>
+	<parameter name="dniAsesor" class="java.lang.String"/>
+	<parameter name="fechaRep" class="java.lang.String"/>
+	<parameter name="horaRep" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from asesor where idAsesor=$P{idAsesor}]]>
+	</queryString>
+	<field name="dniAsesor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idAsesor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="130" splitType="Stretch">
+			<textField>
+				<reportElement x="427" y="1" width="77" height="20" uuid="f955b0f7-ba27-4c17-9214-5cbb53d124da"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="21" width="100" height="20" uuid="3e8c2c4c-c0a9-4c5f-b5cd-25329321b473"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{horaRep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="1" width="105" height="20" uuid="ad2eb788-f9bc-46c2-8add-09f3aabf10d8"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Emision:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="109" y="1" width="100" height="20" uuid="c085a827-4912-44b5-b467-578e64d55379"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaRep}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="504" y="1" width="55" height="20" uuid="36cea193-3c28-4ad8-af89-609c968a1f61"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="132" y="68" width="295" height="47" uuid="cec85c20-aef1-4daf-8781-deb01547e4e5"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de cliente por asesor]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="383" y="0" width="100" height="20" uuid="acda2290-8601-458a-93ac-21505e156d06"/>
+				<text><![CDATA[dniAsesor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="0" width="100" height="20" uuid="4ce90f90-b755-46a5-9583-d83ad0a86d32"/>
+				<text><![CDATA[idAsesor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="383" y="33" width="100" height="20" uuid="412b8cae-9d10-47d9-a9c2-b4fc06809fe4"/>
+				<textFieldExpression><![CDATA[$F{dniAsesor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="74" y="33" width="100" height="20" uuid="4a616dd1-dd8d-4da5-8fa6-103f5c08e4d7"/>
+				<textFieldExpression><![CDATA[$F{idAsesor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

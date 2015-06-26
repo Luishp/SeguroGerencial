@@ -108,8 +108,8 @@
                     <div class="thumbnail">
                         <img src="css/images/Logo1.png" alt="Reporte">
                         <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
+                            <h3>Reporte de frecuencia de ventas</h3>
+                            <p>En este reporte se ve la frecuencia que vende una poliza de seguro</p>
                             <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
                         </div>
                     </div>
@@ -120,8 +120,18 @@
                     <div class="thumbnail">
                         <img src="css/images/Logo1.png" alt="Reporte">
                         <div class="caption">
-                            <h3>Reporte de Ventas</h3>
+                            <h3>Reporte de clientes con deudas</h3>
                             <p>En este reporte se visualizan los totales de ventas por mes</p>
+                            <p><a href="Vistas/clienteDeuda.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="css/images/Logo1.png" alt="Reporte">
+                        <div class="caption">
+                            <h3>Reporte de cliente de categoria</h3>
+                            <p>En este reporte se visualizan los clientes con cierta categoria</p>
                             <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
                         </div>
                     </div>
@@ -130,56 +140,14 @@
                     <div class="thumbnail">
                         <img src="css/images/Logo1.png" alt="Reporte">
                         <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                            <h3>Reporte de asesores con horario disponible</h3>
+                            <p>En este reporte se visualizan los asesores disponibles por zona de pais</p>
+                            <p><a href="Vistas/asesorZonaPais.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="css/images/Logo1.png" alt="Reporte">
-                        <div class="caption">
-                            <h3>Reporte de Ventas</h3>
-                            <p>En este reporte se visualizan los totales de ventas por mes</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            
         </div> <!-- /container -->
         <hr>
         <footer class="footer">

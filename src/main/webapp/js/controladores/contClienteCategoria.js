@@ -2,14 +2,14 @@
 var urlg = "../scparametros/clienteCategoria.jsp";
 
 function traerCategoria() {
-    var idTipoSeguro = $("#TIPO_SEGURO option:selected").attr("value");
+    var categoria = $("#CATEGORIA").attr("value");
     var vista = new Array();
     console.log("Valor de las variables");
-    console.log(idTipoSeguro);
+    console.log(categoria);
     
-    if (idTipoSeguro === null ) {
+    if (categoria === null ) {
         alert("Se necesita tener seleccionado  Tipo de seguro");
     } else {
-        window.location.href = urlg + "?idTipoSeguro" + idTipoSeguro;
+        window.location.href = urlg + "?categoria" + categoria;
     }
 }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="acb949c3-3256-49a8-a25d-37fae10e158f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="municipio" class="java.lang.String"/>
+	<parameter name="departamento" class="java.lang.String"/>
+	<parameter name="fechaRep" class="java.lang.String"/>
+	<parameter name="horaRep" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from zona where municipio =$P{municipio}]]>
+	</queryString>
+	<field name="municipio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="departamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="asesor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="105" height="20" uuid="9db62b18-0081-444d-9449-36681b8ee575"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Emision:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="30" width="40" height="20" uuid="00020ff8-ec3f-4846-a743-b7fb4b0863a6"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="10" width="100" height="20" uuid="d419b821-6884-49ff-a3b9-b689d2f991e8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaRep}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="510" y="10" width="55" height="20" uuid="8f168499-991e-4f08-bc71-a029795ebb55"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="30" width="100" height="20" uuid="d269ea11-1901-4528-aca0-64d0797b7926"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{horaRep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="10" width="77" height="20" uuid="8643abaa-444b-45ee-9f98-196b4a301292"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="65" width="295" height="47" uuid="1f750d4f-1983-483f-8f81-14b946bf0b59"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de agentes por zona de pais]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="2" width="100" height="20" uuid="f6b616ed-6730-4a08-85b2-d7c1e5610414"/>
+				<text><![CDATA[municipio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="2" width="100" height="20" uuid="0104ecbc-e5aa-4733-8691-9076b4f36012"/>
+				<text><![CDATA[departamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="2" width="100" height="20" uuid="66dabe14-7d31-4732-b79f-3b736a6acc31"/>
+				<text><![CDATA[asesor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="157" y="25" width="100" height="20" uuid="aa5ed293-b784-42a9-b254-75a396d8cb33"/>
+				<textFieldExpression><![CDATA[$F{municipio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="25" width="100" height="20" uuid="e99aeb81-bbc5-4c5b-b645-a9c8eeda0810"/>
+				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="25" width="100" height="20" uuid="3367251c-f891-4dc1-b8de-30ae8d83f6e1"/>
+				<textFieldExpression><![CDATA[$F{asesor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

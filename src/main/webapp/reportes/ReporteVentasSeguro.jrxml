@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f95a2429-dfeb-4165-975e-960e8cd146e6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaIni" class="java.lang.String"/>
+	<parameter name="fechaFin" class="java.lang.String"/>
+	<parameter name="fechaRep" class="java.lang.String">
+		<defaultValueExpression><![CDATA["dd/mm/aaaa"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="horaRep" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select count(visita_seguro.id_catalogo),catalogo from (select id_catalogo,catalogo from (select * from tipo_catalogo where tipo_catalogo="tipo_seguro") as ticat,catalogo where ticat.id_tipo_catalogo=catalogo.id_tipo_catalogo) as tip,visita_seguro where tip.id_catalogo=visita_seguro.id_catalogo and visita_seguro.venta="1"]]>
+	</queryString>
+	<field name="count(visita_seguro.id_catalogo)" class="java.lang.Long"/>
+	<field name="catalogo" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre de la opción]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="156" splitType="Stretch">
+			<staticText>
+				<reportElement x="64" y="20" width="40" height="20" uuid="2fd9e53f-a74d-4572-9abb-667e5dfc5a0e"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="104" y="112" width="100" height="20" uuid="864e85a1-3aee-430f-afee-5ef7e39aebd7"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaIni}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="0" width="105" height="20" uuid="fa576bad-b5d4-4880-923a-1b2e9ad50a22"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha Emision:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="104" y="20" width="100" height="20" uuid="eb1de9e5-f8ff-4621-966e-a670a48c1f3d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{horaRep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="112" width="105" height="20" uuid="ae4db4a5-aaaa-472b-a846-915d00835371"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Reporte desde:]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="499" y="0" width="55" height="20" uuid="c49c84fa-f18b-4e05-8c50-4f2a13fdfe25"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="146" y="55" width="295" height="47" uuid="348c48f3-7def-4f67-9720-9fd9e8a643c7"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de polizas de seguro con frecuencia de ventas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="112" width="44" height="20" uuid="654664cc-0acf-44a8-b579-cf839ed939a9"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[hasta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="248" y="112" width="100" height="20" uuid="95561836-bd13-4f25-a80a-8f258bd113f9"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaFin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="77" height="20" uuid="cfa8e009-1206-4c2e-a141-1b715aa78cbd"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="0" width="100" height="20" uuid="43607ee4-7847-46ff-bc0d-01dfcbca982e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaRep}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="119" y="2" width="120" height="20" uuid="f16534ea-8168-4067-aecd-847df5bfbd8c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tipo de seguro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="2" width="166" height="20" uuid="b999d4cd-17e0-4621-acdb-910fd46ed65d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Numero de ventas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="119" y="0" width="120" height="20" uuid="b15e48ec-0e21-4659-99c8-914cf93f4a7f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{catalogo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="0" width="166" height="20" uuid="a8ff2cbd-6b08-4526-9c41-4675df35a3b1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{count(visita_seguro.id_catalogo)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
