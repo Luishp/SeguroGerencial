@@ -2,23 +2,32 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="832399a2-5b26-4f84-b6d8-df096b907d42">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="82"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="fechaIni" class="java.lang.String"/>
 	<parameter name="fechaFin" class="java.lang.String"/>
 	<parameter name="horaRep" class="java.lang.String"/>
 	<parameter name="fechaRep" class="java.lang.String">
 		<defaultValueExpression><![CDATA["dd/mm/aaaa"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="condicion" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1=1"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="canal" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ninguno"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select count(persona),canal,persona from(select * from canalutil where fecha<=$P{fechaFin} and fecha>=$P{fechaIni}) as can]]>
+		<![CDATA[select * from (select canal_comunic,nombres_asesor,apellidos_asesor,count(*) from repocinco group by canal_comunic,id_asesor) as t where canal_comunic=$P{canal}]]>
 	</queryString>
-	<field name="count(persona)" class="java.lang.Long"/>
-	<field name="canal" class="java.lang.String">
+	<field name="canal_comunic" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="persona" class="java.lang.String">
+	<field name="nombres_asesor" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="apellidos_asesor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="count(*)" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -41,7 +50,7 @@
 			<staticText>
 				<reportElement x="147" y="55" width="295" height="47" uuid="50b30535-1265-4546-895e-c8b5ba6d6eef"/>
 				<textElement textAlignment="Center">
-					<font size="16"/>
+					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reporte de Medios de comunicacion mas usados]]></text>
 			</staticText>
@@ -55,14 +64,14 @@
 			<staticText>
 				<reportElement x="0" y="112" width="105" height="20" uuid="c5602a44-e064-4248-b8dd-f0978897ddd4"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Utilizados desde:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="205" y="112" width="44" height="20" uuid="f0eaba98-9efb-49dc-856d-a454a597993d"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[hasta]]></text>
 			</staticText>
@@ -76,7 +85,7 @@
 			<staticText>
 				<reportElement x="0" y="0" width="105" height="20" uuid="9b80bb8b-5667-4266-869b-431042c30c8d"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font size="12" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Emision:]]></text>
 			</staticText>
@@ -90,7 +99,7 @@
 			<staticText>
 				<reportElement x="65" y="20" width="40" height="20" uuid="b3ef2b90-ecab-4ff9-900d-97adec818948"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font size="12" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Hora:]]></text>
 			</staticText>
@@ -107,34 +116,122 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="23" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="264" y="2" width="127" height="20" uuid="f389404b-95b3-4d20-8cf3-4fbdd38065c8"/>
-				<text><![CDATA[canal]]></text>
+				<reportElement x="24" y="0" width="123" height="20" uuid="b3aae4b5-d310-4000-8f57-7502cc62487f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="391" y="2" width="123" height="20" uuid="1bb357bc-cc0f-4dde-93f7-6892a33c7d84"/>
-				<text><![CDATA[Veces usadas por periodo]]></text>
+				<reportElement x="147" y="0" width="129" height="20" uuid="b8306769-25a2-4556-afca-431416f8560a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="147" y="2" width="117" height="20" uuid="4ab52a6f-d53a-4651-8e67-689780f5e279"/>
-				<text><![CDATA[persona]]></text>
+				<reportElement x="276" y="0" width="147" height="20" uuid="ede76d7a-f2d5-4dae-a754-fb645aa920f4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Canal de comunicacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="0" width="117" height="20" uuid="730b3ced-bf7b-49b9-8978-7a59f19c3a28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. veces utilizadas]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="25" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement x="264" y="3" width="127" height="20" uuid="a919e4f1-5ef5-47b7-91de-fdcc9a6f9662"/>
-				<textFieldExpression><![CDATA[$F{canal}]]></textFieldExpression>
+				<reportElement x="24" y="0" width="123" height="20" uuid="d9809f14-1ade-4e76-9a53-956742f0c738"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres_asesor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="391" y="3" width="123" height="20" uuid="9f7c9ce5-4a11-460d-8bc1-c13d7e8d03e8"/>
-				<textFieldExpression><![CDATA[$F{count(persona)}]]></textFieldExpression>
+				<reportElement x="147" y="0" width="129" height="20" uuid="af19b261-c846-42cc-a15b-61511da03de5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellidos_asesor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="149" y="5" width="115" height="20" uuid="433f2816-e579-49e8-89d2-218a22427299"/>
-				<textFieldExpression><![CDATA[$F{persona}]]></textFieldExpression>
+				<reportElement x="276" y="0" width="147" height="20" uuid="96f8d6ce-cbd9-427a-86ce-c99c56dbc227"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{canal_comunic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="117" height="20" uuid="efcdea7d-a5d4-4315-87a2-d3bbd0238ea3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{count(*)}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

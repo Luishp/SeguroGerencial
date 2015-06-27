@@ -26,6 +26,7 @@
         String inicial = request.getParameter("fechaIni");
         String fin = request.getParameter("fechaFin");
         String canal = request.getParameter("canal");
+        String condicion = "fecha_uso>="+inicial+" and fecha_uso<="+fin;
         String driver = "com.mysql.jdbc.Driver";
         String connectString = "jdbc:mysql://localhost:3306/aseguradora";
         String user = "admin";
@@ -53,6 +54,7 @@
         parametros.put("fechaIni", inicial);
         parametros.put("fechaFin", fin);
         parametros.put("canal", canal);
+        parametros.put("condicion",condicion);
         parametros.put("fechaRep", fechaReporte);
         parametros.put("horaRep", horaReporte);
         Connection conexion;

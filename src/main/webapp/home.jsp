@@ -110,7 +110,7 @@
                         <div class="caption">
                             <h3>Reporte de frecuencia de ventas</h3>
                             <p>En este reporte se ve la frecuencia que vende una poliza de seguro</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                            <p><a href="Vistas/ventasSeguro.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
                         </div>
                     </div>
                 </div>
