@@ -16,7 +16,7 @@
 		<defaultValueExpression><![CDATA["ninguno"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from (select canal_comunic,nombres_asesor,apellidos_asesor,count(*) from repocinco group by canal_comunic,id_asesor) as t where canal_comunic=$P{canal}]]>
+		<![CDATA[select * from (select canal_comunic,nombres_asesor,apellidos_asesor,count(*) from (select * from repocinco where $P!{condicion}) as y group by canal_comunic,id_asesor) as t where canal_comunic=$P{canal}]]>
 	</queryString>
 	<field name="canal_comunic" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
