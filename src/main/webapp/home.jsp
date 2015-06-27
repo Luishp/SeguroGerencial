@@ -146,6 +146,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="css/images/Logo1.png" alt="Reporte">
+                        <div class="caption">
+                            <h3>Reporte de Clientes con horario disponible</h3>
+                            <p>En este reporte se visualizan los clientes con horario disponible y zona que residen</p>
+                            <p><a href="Vistas/clienteDispZona.html" class="btn btn-primary" role="button">Ver Reporte</a> <a href="#" class="btn btn-default" role="button">Ayuda</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
         </div> <!-- /container -->
